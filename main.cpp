@@ -191,15 +191,7 @@ void parse_config () /* {{{ */ {
   //} catch (const libconfig::SettingNotFoundException &) {}
 
   
-
-  try {
-
-    conf.lookupValue (prefix + "use_file_db", param.use_file_db);
-
-  } catch (const libconfig::SettingNotFoundException &) {}
-
   
-
 try {
 
     conf.lookupValue (prefix + "use_file_db", param.use_file_db);
