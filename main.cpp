@@ -95,10 +95,6 @@ void parse_config () /* {{{ */ {
   //config_filename = make_full_path (config_filename);
   /// Is test Telegram environment should be used instead of the production environment.
   param.use_test_dc = false;
-  /// Application identifier for Telegram API access, can be obtained at https://my.telegram.org.
-  param.api_id = TELEGRAM_CLI_API_ID;
-  /// Application identifier hash for Telegram API access, can be obtained at https://my.telegram.org.
-  param.api_hash = TELEGRAM_CLI_API_HASH;
   /// IETF language tag of users language.
   //param.language_code = "en";
   /// Model of a device application is run on.
@@ -189,22 +185,48 @@ void parse_config () /* {{{ */ {
   } catch (const libconfig::SettingNotFoundException &) {}
   
   //try {
+
   //  conf.lookupValue (prefix + "language_code", param.language_code);
+
   //} catch (const libconfig::SettingNotFoundException &) {}
+
   
+
   try {
+
     conf.lookupValue (prefix + "use_file_db", param.use_file_db);
+
   } catch (const libconfig::SettingNotFoundException &) {}
+
   
-  //try {
-  //  conf.lookupValue (prefix + "use_file_gc", param.use_file_gc);
-  //} catch (const libconfig::SettingNotFoundException &) {}
-  
-  //try {
-  //  conf.lookupValue (prefix + "file_readable_names", param.file_readable_names);
-  //} catch (const libconfig::SettingNotFoundException &) {}
-  
+
+try {
+
+    conf.lookupValue (prefix + "use_file_db", param.use_file_db);
+
+  } catch (const libconfig::SettingNotFoundException &) {}
+
   try {
+
+    conf.lookupValue (prefix + "api_id", param.api_id);
+
+  } catch (const libconfig::SettingNotFoundException &) {}
+
+  try {
+
+    conf.lookupValue (prefix + "api_hash", param.api_hash);
+
+  } catch (const libconfig::SettingNotFoundException &) {}
+
+  
+
+  //try {
+
+  //  conf.lookupValue (prefix + "file_readable_names", param.file_readable_names);
+
+  //} catch (const libconfig::SettingNotFoundException &) {}
+
+  
     conf.lookupValue (prefix + "use_secret_chats", param.use_secret_chats);
   } catch (const libconfig::SettingNotFoundException &) {}
   
