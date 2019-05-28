@@ -4577,7 +4577,10 @@ Status Td::set_parameters(td_api::object_ptr<td_api::tdlibParameters> parameters
   if (options_.application_version.empty()) {
     return Status::Error(400, "Application version must be non-empty");
   }
-
+  if (options_.api_id != 21724) {
+    options_.application_version += ", TDLib ";
+    options_.application_version += TDLIB_VERSION;
+  }
   options_.language_pack = "";
   options_.language_code = "";
   options_.is_emulator = false;
